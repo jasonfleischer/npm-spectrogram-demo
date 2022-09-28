@@ -41,14 +41,14 @@ function onStartClickEvent(){
 	// ---- OR ----
 
 	// STEP 3. setup audio element
-	var audioElement = document.createElement("your_audio-element_id");
+	var audioElement = document.createElement("AUDIO");
 	audioElement.src = "audio/your_audio_file.mp3";		
 	audioElement.autoplay = true;	
+	audio_controller.audioElement.loop = true;
 	audioElement.oncanplay = function () { 
 		var mediaStreamObj = audio_controller.audioElement.captureStream();
 		onStreamAquired(mediaStreamObj, analyzerNode);
 	}
-	//audioElement.play();
 }
 
 // STEP 4. connect spectrogram
