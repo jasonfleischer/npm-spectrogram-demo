@@ -46,7 +46,7 @@ function onStartClickEvent(){
 	audioElement.autoplay = true;	
 	audio_controller.audioElement.loop = true;
 	audioElement.oncanplay = function () { 
-		var mediaStreamObj = audio_controller.audioElement.captureStream();
+		var mediaStreamObj = audioElement.captureStream();
 		onStreamAquired(mediaStreamObj, analyzerNode);
 	}
 }
