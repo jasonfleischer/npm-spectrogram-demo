@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@jasonfleischer/spectrogram": "^1.0.0"
+  }
+}
