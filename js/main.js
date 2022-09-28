@@ -44,7 +44,8 @@ function onStartClickEvent(){
 	// STEP 3. setup audio element
 	var audioElement = document.createElement("AUDIO");
 	audioElement.src = "audio/your_audio_file.mp3";		
-	audioElement.autoplay = true;	
+	audioElement.autoplay = true;
+	audioElement.loop = true;
 	audioElement.oncanplay = function () { 
 		var mediaStreamObj = audioElement.captureStream();
 		onStreamAquired(mediaStreamObj, analyzerNode);
