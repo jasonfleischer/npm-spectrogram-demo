@@ -31,24 +31,24 @@ function onStartClickEvent(){
 	analyzerNode.fftSize = 1024;
 
 	// STEP 3. request microphone access
-	navigator.mediaDevices.getUserMedia({ video: false, audio: true })
+	/*navigator.mediaDevices.getUserMedia({ video: false, audio: true })
 	  	.then( (mediaStreamObj) => {
 	  		onStreamAquired(mediaStreamObj, analyzerNode);
 		})
 		.catch( (err) => {
 		 	console.log("getUserMedia: " + err);
-		});
+		});*/
 
 	// ---- OR ----
 
 	// STEP 3. setup audio element
-	/*var audioElement = document.createElement("AUDIO");
+	var audioElement = document.createElement("AUDIO");
 	audioElement.src = "audio/your_audio_file.mp3";		
 	audioElement.autoplay = true;	
 	audioElement.oncanplay = function () { 
 		var mediaStreamObj = audioElement.captureStream();
 		onStreamAquired(mediaStreamObj, analyzerNode);
-	}*/
+	}
 }
 
 // STEP 4. connect spectrogram
