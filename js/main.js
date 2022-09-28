@@ -44,7 +44,7 @@ function onStartClickEvent(){
 	var audioElement = document.createElement("AUDIO");
 	audioElement.src = "audio/your_audio_file.mp3";		
 	audioElement.autoplay = true;	
-	audio_controller.audioElement.loop = true;
+	//audio_controller.audioElement.loop = true;
 	audioElement.oncanplay = function () { 
 		var mediaStreamObj = audioElement.captureStream();
 		onStreamAquired(mediaStreamObj, analyzerNode);
