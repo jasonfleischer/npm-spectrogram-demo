@@ -136,7 +136,8 @@ function setup_controls(){
 				var value = this.checked;
 				log.i("on darkmode change: " + value);
 				model.is_dark_mode = value;
-				//spectrogram.updateColors(value);
+				spectrogram.darkMode = value;
+				spectrogram.updateColors(model.is_colored);
 				//spectrogram.updateHighlightPeaks(!value);			
 			});
 			$("darkmode_checkbox").checked = model.is_dark_mode;
