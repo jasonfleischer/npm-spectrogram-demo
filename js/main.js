@@ -27,15 +27,15 @@ init = function() {
 		startVisualization = startVisualization, 
 		fftSize = model.fft_size);
 
-	var audioElement = document.createElement("AUDIO");
-	audioElement.src = "audio/your_audio_file.mp3";		
-	audioElement.autoplay = true;
-	audioElement.loop = true;
+	var audio_element = document.createElement("AUDIO");
+	audio_element.src = "audio/your_audio_file.mp3";		
+	audio_element.autoplay = true;
+	audio_element.loop = true;
 	audio_element_audio_controller = new AudioController(	
 		onStateChange = onAudioStateChanged, 
 		startVisualization = startVisualization, 
 		fftSize = model.fft_size,
-		audioElement = audioElement);
+		audioElement = audio_element);
 	
 	setup_controls();
 	updateUI_buttons(audio_controller.state);
