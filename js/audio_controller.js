@@ -35,7 +35,11 @@ class AudioController {
 
 			} else {
 				this.audioElement.src = this.audioElement.src; // to trigger oncanplay	
+				
+				log.e(this.audioElement);
 				this.audioElement.oncanplay = function () { 
+					log.e(this)
+					log.e(this.audioElement)
 					var mediaStreamObj = this.audioElement.captureStream();
 					onStreamAquired(mediaStreamObj, this);
 				}
