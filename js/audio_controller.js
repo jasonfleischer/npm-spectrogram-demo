@@ -56,6 +56,9 @@ class AudioController {
 
 	resume() {
 		if(this.state == audio_controller_state.PAUSED){
+			if(!this.use_microphone){
+				this.audioElement.play();
+			}
 			this.state = audio_controller_state.RESUMED;
 			this.onStateChange(this.state);
 		} else {

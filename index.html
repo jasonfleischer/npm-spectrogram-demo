@@ -18,34 +18,36 @@
 	<button id="pause">Pause</button>
 	<button onclick="window.open('https://ko-fi.com/jasonfleischer', '_blank')">Support the Developer</button>
 	<br><br>
-	<label for="fft_size_select">
-		FFT Size
-		<select id="fft_size_select">
-			<option value="32">32</option>
-			<option value="64">64</option>
-			<option value="128">128</option>
-			<option value="512">512</option>
-			<option value="1024" selected="selected">1024</option>
-			<option value="2048">2048</option>
-			<option value="4096">4096</option>
-			<option value="8192">8192</option>
-			<option value="16384">16384</option>
-			<option value="32768">32768</option>
-		</select>
-	</label>
-	<br>
-	<label for="maxFrequencyRange">
-		<span id="maxFrequency"></span>
-		<input type="range" min="2250" max="22050" value="4200" step="50" id="maxFrequencyRange" />
-	</label>
-	<br>
-	<label for="colors">
-		Colors <input type="checkbox" id="colors_checkbox" name="colors" value="no">
-	</label>
-	<br>
-	<label for="darkmode">
-		Dark Mode <input type="checkbox" id="darkmode_checkbox" name="darkmode" value="no">
-	</label>
+	<div id="settings">
+		<label for="fft_size_select">
+			FFT Size
+			<select id="fft_size_select">
+				<option value="32">32</option>
+				<option value="64">64</option>
+				<option value="128">128</option>
+				<option value="512">512</option>
+				<option value="1024" selected="selected">1024</option>
+				<option value="2048">2048</option>
+				<option value="4096">4096</option>
+				<option value="8192">8192</option>
+				<option value="16384">16384</option>
+				<option value="32768">32768</option>
+			</select>
+		</label>
+		<br>
+		<label for="maxFrequencyRange">
+			<span id="maxFrequency"></span>
+			<input type="range" min="2250" max="22050" value="4200" step="50" id="maxFrequencyRange" />
+		</label>
+		<br>
+		<label for="colors">
+			Colors <input type="checkbox" id="colors_checkbox" name="colors" value="no">
+		</label>
+		<br>
+		<label for="darkmode">
+			Dark Mode <input type="checkbox" id="darkmode_checkbox" name="darkmode" value="no">
+		</label>
+	</div>
 	<br>
 	<br>
 	<script src="js/bundle.js"></script>

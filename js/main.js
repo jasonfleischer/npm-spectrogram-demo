@@ -3,6 +3,7 @@ const Spectrogram = require("@jasonfleischer/spectrogram");
 
 var spectrogram = {};
 var audio_controller = {};
+var microphone_audio_controller = {};
 var audio_element_audio_controller = {};
 var audioElement = {};
 
@@ -23,7 +24,7 @@ init = function() {
 									minimumFrequency = 0, 
 									maximumFrequency = model.max_frequency);
 
-	audio_controller = new AudioController(	
+	microphone_audio_controller = new AudioController(	
 		onStateChange = onAudioStateChanged, 
 		startVisualization = startVisualization, 
 		fftSize = model.fft_size);
@@ -37,12 +38,12 @@ init = function() {
 		startVisualization = startVisualization, 
 		fftSize = model.fft_size,
 		audioElement = audioElement);
-	
 	setup_controls();
-	updateUI_buttons(audio_controller.state);
+	updateUI_buttons(audio_controller_state.STOPPED);
 }
 
 onAudioStateChanged = function(audio_state) {
+	log.e(audio_state)
 	switch(audio_state){
 		case audio_controller_state.STOPPED:
 			break;
@@ -57,24 +58,29 @@ onAudioStateChanged = function(audio_state) {
 }
 
 updateUI_buttons = function(audio_state) {
+	log.e(audio_state)
 	switch(audio_state){
 		case audio_controller_state.STOPPED:
 			$("start").disabled = false;
 			$("audio_element_start").disabled = false;
 			$("resume").disabled = true;
 			$("pause").disabled = true;
+			log.e("hjk")
+			$("settings").style.display = 'none';
 			break;
 		case audio_controller_state.RESUMED:
 			$("start").disabled = true;
 			$("audio_element_start").disabled = true;
 			$("resume").disabled = true;
 			$("pause").disabled = false;
+			$("settings").style.display = 'block';
 			break;
 		case audio_controller_state.PAUSED:
 			$("start").disabled = true;
 			$("audio_element_start").disabled = true;
 			$("resume").disabled = false;
 			$("pause").disabled = true;
+			$("settings").style.display = 'block';
 			break;
 	}
 }
@@ -87,10 +93,16 @@ function setup_controls(){
 
 	setupOnClicks();
 	function setupOnClicks(){
-		$("start").onclick = function() { audio_controller.start(); };
+		$("start").onclick = function() { 
+			audio_controller = microphone_audio_controller;
+			audio_controller.start(); 
+		};
 		$("resume").onclick = function() { audio_controller.resume(); };
 		$("pause").onclick = function() { audio_controller.pause(); };
-		$("audio_element_start").onclick = function() { audio_element_audio_controller.start(); };
+		$("audio_element_start").onclick = function() { 
+			audio_controller = audio_element_audio_controller;
+			audio_controller.start(); 
+		};
 	}
 
 	setupMaxFrequencySlider();
@@ -179,57 +191,3 @@ function setup_controls(){
 $ = function(id){ return document.getElementById(id); }
 
 init();
-///////
-/*
-// STEP 1. create spectrogram
-const Spectrogram = require("@jasonfleischer/spectrogram");
-
-var spectrogram = new Spectrogram(id = "spectrogram", useHeatMapColors = true, highlightPeaks = false, darkMode = true, minimumFrequency = 0, maximumFrequency = 22050 );
-
-var audioContext = {};
-
-document.getElementById("start").onclick = onStartClickEvent;
-
-function onStartClickEvent(){
-
-	// STEP 2. build analyzerNode
-	audioContext = new AudioContext();
-	var analyzerNode = audioContext.createAnalyser();
-	analyzerNode.smoothingTimeConstant = 0;
-	analyzerNode.fftSize = 1024;
-
-	// STEP 3. request microphone access
-	/*navigator.mediaDevices.getUserMedia({ video: false, audio: true })
-	  	.then( (mediaStreamObj) => {
-	  		onStreamAquired(mediaStreamObj, analyzerNode);
-		})
-		.catch( (err) => {
-		 	console.log("getUserMedia: " + err);
-		});* /
-
-	// ---- OR ----
-
-	// STEP 3. setup audio element
-	var audioElement = document.createElement("AUDIO");
-	audioElement.src = "audio/your_audio_file.mp3";		
-	audioElement.autoplay = true;
-	audioElement.loop = true;
-	audioElement.oncanplay = function () { 
-		var mediaStreamObj = audioElement.captureStream();
-		onStreamAquired(mediaStreamObj, analyzerNode);
-	}
-}
-
-// STEP 4. connect spectrogram
-function onStreamAquired(mediaStreamObj, analyzerNode) {
-	var sourceNode = audioContext.createMediaStreamSource(mediaStreamObj);
-	sourceNode.connect(analyzerNode);
-	spectrogram.draw(analyzerNode, audioContext.sampleRate);
-}
-
-// Additional commands
-
-/*spectrogram.resume();
-spectrogram.pause();*/
-
-
