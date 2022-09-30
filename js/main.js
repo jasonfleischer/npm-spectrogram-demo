@@ -4,6 +4,7 @@ const Spectrogram = require("@jasonfleischer/spectrogram");
 var spectrogram = {};
 var audio_controller = {};
 var audio_element_audio_controller = {};
+var audioElement = {};
 
 var model = {
 	is_colored: true,
@@ -27,7 +28,7 @@ init = function() {
 		startVisualization = startVisualization, 
 		fftSize = model.fft_size);
 
-	var audioElement = document.createElement("AUDIO");
+	audioElement = document.createElement("AUDIO");
 	audioElement.src = "audio/your_audio_file.mp3";		
 	audioElement.autoplay = true;
 	audioElement.loop = true;
