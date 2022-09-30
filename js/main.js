@@ -2,6 +2,7 @@ const log = require("@jasonfleischer/log");
 const Spectrogram = require("@jasonfleischer/spectrogram");
 
 var spectrogram = {};
+var audio_element = {};
 var audio_controller = {};
 var audio_element_audio_controller = {};
 
@@ -27,7 +28,7 @@ init = function() {
 		startVisualization = startVisualization, 
 		fftSize = model.fft_size);
 
-	var audio_element = document.createElement("AUDIO");
+	audio_element = document.createElement("AUDIO");
 	audio_element.src = "audio/your_audio_file.mp3";		
 	audio_element.autoplay = true;
 	audio_element.loop = true;
