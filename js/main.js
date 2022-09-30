@@ -138,7 +138,6 @@ function setup_controls(){
 				model.is_dark_mode = value;
 				spectrogram.darkMode = value;
 				spectrogram.updateColors(model.is_colored);
-				//spectrogram.updateHighlightPeaks(!value);			
 			});
 			$("darkmode_checkbox").checked = model.is_dark_mode;
 		}
@@ -184,11 +183,11 @@ init();
 // STEP 1. create spectrogram
 const Spectrogram = require("@jasonfleischer/spectrogram");
 
-var spectrogram = new Spectrogram(id = "your_spectrogram_id", useHeatMapColors = true, highlightPeaks = false, darkMode = true, minimumFrequency = 0, maximumFrequency = 22050 );
+var spectrogram = new Spectrogram(id = "spectrogram", useHeatMapColors = true, highlightPeaks = false, darkMode = true, minimumFrequency = 0, maximumFrequency = 22050 );
 
 var audioContext = {};
 
-document.getElementById("your_button_id").onclick = onStartClickEvent;
+document.getElementById("start").onclick = onStartClickEvent;
 
 function onStartClickEvent(){
 
