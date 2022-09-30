@@ -43,7 +43,6 @@ init = function() {
 }
 
 onAudioStateChanged = function(audio_state) {
-	log.e(audio_state)
 	switch(audio_state){
 		case audio_controller_state.STOPPED:
 			break;
@@ -58,14 +57,12 @@ onAudioStateChanged = function(audio_state) {
 }
 
 updateUI_buttons = function(audio_state) {
-	log.e(audio_state)
 	switch(audio_state){
 		case audio_controller_state.STOPPED:
 			$("start").disabled = false;
 			$("audio_element_start").disabled = false;
 			$("resume").disabled = true;
 			$("pause").disabled = true;
-			log.e("hjk")
 			$("settings").style.display = 'none';
 			break;
 		case audio_controller_state.RESUMED:
