@@ -8,23 +8,16 @@
 	<meta name='viewport' content='width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no'>
 </head>
 <body>
-	<h1>Demo for node package: <a href="https://www.npmjs.com/package/@jasonfleischer/spectrogram">@jasonfleischer/spectrogram</a></h1>
+	<h1>Demo for node package: <a href="https://www.npmjs.com/package/@jasonfleischer/spectrogram">@jasonfleischer/spectrogram</a></h1>	
 	<h3>Spectrogram:</h3>
-	<div id="spectrogram"></div>
+	<div style="width: 100%; height: 300px" id="spectrogram"></div>
 	<br/>
-	<button id="start">Start</button>
+	<button id="start">Start Microphone</button>
+	<button id="audio_element_start">Start Audio</button>
 	<button id="resume">Resume</button>
 	<button id="pause">Pause</button>
-	<br>
-	<br>
-
-
-<div style="width: 500px; height: 320px" id="your_spectrogram_id"></div>
-<button id="your_button_id">Start</button>
-<br>
-<br>
-
-	<h3>Settings:</h3>
+	<button onclick="window.open('https://ko-fi.com/jasonfleischer', '_blank')">Support the Developer</button>
+	<br><br>
 	<label for="fft_size_select">
 		FFT Size
 		<select id="fft_size_select">
@@ -42,7 +35,7 @@
 	</label>
 	<br>
 	<label for="maxFrequencyRange">
-		Max Freq
+		<span id="maxFrequency"></span>
 		<input type="range" min="2250" max="22050" value="4200" step="50" id="maxFrequencyRange" />
 	</label>
 	<br>
@@ -57,8 +50,6 @@
 	</label>
 	<br>
 	<br>
-
-	<button onclick="window.open('https://ko-fi.com/jasonfleischer', '_blank')">Support the Developer</button>
 	<script src="js/bundle.js"></script>
 </body>
 </html>

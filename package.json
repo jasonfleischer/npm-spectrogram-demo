@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@jasonfleischer/log": "^1.0.8",
     "@jasonfleischer/spectrogram": "^1.0.0"
   }
 }
