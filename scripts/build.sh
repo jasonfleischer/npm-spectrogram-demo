@@ -6,7 +6,7 @@
 # $ npm install -g uglify-js
 # $ npm install -g browserify
 
-#npm update;
+npm update;
 
 uglifyjs js/audio_controller.js js/main.js -o js/bundle.js
 browserify js/bundle.js -o js/bundle.js
